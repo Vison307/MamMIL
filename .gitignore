@@ -1,0 +1,12 @@
+**/__pycache__
+.vscode
+*.egg-info
+logs/*
+outputs/*
+data/*
+outputs/*
+.dockerignore
+run_script.txt
+save.sh
+reproduce.sh
+mammil:v1_20241031_172354.tar.gz

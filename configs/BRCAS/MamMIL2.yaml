@@ -1,0 +1,47 @@
+General:
+    comment: 
+    seed: &seed 2024
+    gpus: [0]
+    epochs: &epoch 250
+    patience: 20 # early stopping patience (used to build callback)
+    monitor: 'val_loss' # early stopping monitor
+    mode: 'min' # 'max' or 'min', early stopping mode
+    server: train # train or test
+    log_path: logs/ # the root dir to save logs
+
+Data:
+    dataset_name: MIL_Graph_dataset
+    data_shuffle: False
+    data_dir: data/BRACS/BRACS_512_at_level0/PyG_files
+    split_dir: splits/BRACS_100
+    label_csv_path: dataset_csv/BRACS.csv
+    label_dict: {'IC': 0, 'FEA': 1, 'PB': 2, 'DCIS': 3, 'UDH': 4, 'N': 5, 'ADH': 6}
+    
+    train_dataloader:
+        batch_size: 1 
+        num_workers: 8
+
+    test_dataloader:
+        batch_size: 1
+        num_workers: 8
+
+Model:
+    name: MamMIL2
+    input_dim: 1024
+    embed_dim: 512
+    layer_n: 2
+    act: relu
+    dropout: 0
+    num_classes: &n_classes 7
+    n_classes: *n_classes
+    
+Optimizer:
+    opt: radam # adam
+    lr: 0.0001 # 2e-4
+    opt_eps: null # eps in parameter
+    opt_betas: !!python/tuple [0.9, 0.999] # beta in parameter
+    momentum: null # momentum in parameter
+    weight_decay: 0.05 # weight decay in parameter
+
+Loss:
+    base_loss: CrossEntropyLoss

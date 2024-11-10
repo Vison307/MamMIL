@@ -1,0 +1,55 @@
+General:
+    comment: 
+    seed: &seed 2024
+    gpus: [0]
+    epochs: &epoch 250 
+    patience: 20 # early stopping patience (used to build callback)
+    monitor: 'val_c_index' # early stopping monitor
+    mode: 'max' # 'max' or 'min', early stopping mode
+    server: train # train or test
+    log_path: logs/ # the root dir to save logs
+
+Data:
+    dataset_name: Survival_Graph_dataset
+    survival: &survival True
+
+    csv_path: dataset_csv/LUAD_processed.csv
+    data_dir: data/TCGA_FEATURES/TCGA_LUAD_512_at_level0/vim/PyG_files
+    shuffle: False
+    seed: *seed
+    patient_strat: False
+    n_bins: 4
+    label_col: survival_months
+
+    split_dir: splits/TCGA_LUAD_survival_kfold
+    
+    train_dataloader:
+        batch_size: 1 
+        num_workers: 4
+
+    test_dataloader:
+        batch_size: 1
+        num_workers: 4
+
+Model:
+    name: MamMIL2
+    input_dim: 384
+    embed_dim: 512
+    d_state: 128
+    layer_n: 2
+    act: relu
+    dropout: 0
+    num_classes: &n_classes 4
+    n_classes: *n_classes
+    survival: *survival
+
+Optimizer:
+    opt: radam # adam
+    lr: 0.0001 # 2e-4
+    opt_eps: null # eps in parameter
+    opt_betas: !!python/tuple [0.9, 0.999] # beta in parameter
+    momentum: null # momentum in parameter
+    weight_decay: 0.05 # weight decay in parameter
+
+Loss:
+    base_loss: CrossEntropyLoss

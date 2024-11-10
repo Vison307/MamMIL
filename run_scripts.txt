@@ -1,0 +1,7 @@
+DOCKER_BUILDKIT=1 docker build -t mammil:train .
+
+# Test
+docker run --gpus "device=6" --rm -it --shm-size 8G -v /home/fzj/data114/CODE/MICCAI24/github_ver/data:/opt/app/data -v /home/fzj/data114/CODE/MICCAI24/github_ver/outputs:/outputs mammil:v1
+
+# Train
+docker run --gpus "device=6" --rm -it --shm-size 8G -v /home/fzj/data114/CODE/MICCAI24/github_ver/data:/opt/app/data -v /home/fzj/data114/CODE/MICCAI24/github_ver/logs:/opt/app/logs mammil:train
