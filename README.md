@@ -113,14 +113,15 @@ Make sure you have give `777` access to the `./outputs` directory.
 # Citation
 If you find our work helpful, please cite our paper:
 ```text
-@misc{fang2024mammilmultipleinstancelearning,
-      title={MamMIL: Multiple Instance Learning for Whole Slide Images with State Space Models}, 
-      author={Zijie Fang and Yifeng Wang and Ye Zhang and Zhi Wang and Jian Zhang and Xiangyang Ji and Yongbing Zhang},
-      year={2024},
-      eprint={2403.05160},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2403.05160}, 
-}
+@INPROCEEDINGS{10822552,
+  author={Fang, Zijie and Wang, Yifeng and Zhang, Ye and Wang, Zhi and Zhang, Jian and Ji, Xiangyang and Zhang, Yongbing},
+  booktitle={2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)}, 
+  title={MamMIL: Multiple Instance Learning for Whole Slide Images with State Space Models}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={3200-3205},
+  keywords={Degradation;Deep learning;Analytical models;Pathology;Codes;Biological system modeling;Transformers;Graph neural networks;Complexity theory;Biomedical imaging;Multiple Instance Learning;State Space Models;Whole Slide Images},
+  doi={10.1109/BIBM62325.2024.10822552}}
 ```
 
